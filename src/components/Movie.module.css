@@ -4,7 +4,9 @@
   background-color: #230052;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 12px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   color: white;
 }
 
@@ -17,4 +19,9 @@
   color: #eccf77;
   margin: 0;
   font-size: 1rem;
+}
+.movie button {
+  background-color: white;
+  align-self: flex-end;
+  color: #230052;
 }

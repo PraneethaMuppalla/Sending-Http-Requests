@@ -20,7 +20,7 @@ function App() {
         throw new Error("Something went wrong!");
       }
       const data = await response.json();
-      console.log(data);
+
       const loadedMovies = [];
 
       for (const key in data) {
@@ -37,6 +37,15 @@ function App() {
     }
     setIsLoading(false);
   }, []);
+
+  const deleteMovieHandler = async (id) => {
+    const response = await fetch(
+      `https://react-http-4a852-default-rtdb.firebaseio.com/movies.json/${id}`,
+      { method: "DELETE" }
+    );
+    const data = await response.json();
+    console.log(data);
+  };
 
   useEffect(() => {
     fetchMoviesHandler();
@@ -67,7 +76,7 @@ function App() {
   let content = <p>Found no movies.</p>;
 
   if (movies.length > 0) {
-    content = <MoviesList movies={movies} />;
+    content = <MoviesList onDeleteMovie={deleteMovieHandler} movies={movies} />;
   }
 
   if (error) {
